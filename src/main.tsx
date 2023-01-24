@@ -30,7 +30,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
         <QueryClientProvider client={queryClient}>
-            <main className="grid place-content-center gap-24 h-[100vh] bg-primary-900 text-neutral-200">
+            <main className="grid place-content-center gap:12 md:gap-24 h-[100vh] bg-primary-900 text-neutral-200">
                 <RouterProvider router={router} />
             </main>
         </QueryClientProvider>
