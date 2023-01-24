@@ -111,7 +111,7 @@ export default function Game({ data }: Props) {
                 ></progress>
             </div>
 
-            <div className="flex justify-center items-center w-80 h-[214px] rounded-md overflow-hidden">
+            <div className="flex justify-center items-center max-w-xs max-h-80 rounded-md overflow-hidden">
                 <img className="my-auto" src={correctCountry?.flagUrl} alt={correctCountry?.name} />
             </div>
 
