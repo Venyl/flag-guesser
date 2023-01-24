@@ -112,7 +112,11 @@ export default function Game({ data }: Props) {
             </div>
 
             <div className="flex justify-center items-center max-w-xs max-h-80 rounded-md overflow-hidden">
-                <img className="my-auto" src={correctCountry?.flagUrl} alt={correctCountry?.name} />
+                <img
+                    className="my-auto w-full"
+                    src={correctCountry?.flagUrl}
+                    alt={correctCountry?.name}
+                />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
