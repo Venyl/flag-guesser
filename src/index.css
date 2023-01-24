@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    color-scheme: dark;
+}
+
 html:focus-within {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
