@@ -18,12 +18,26 @@ interface Country {
 
 interface Props {
     data: ApiCountry[];
+    mode: string;
 }
 
-export default function Game({ data }: Props) {
+export default function Game({ data, mode }: Props) {
     const [score, setScore] = useState<number>(0);
     const [usedCountries, setUsedCountries] = useState<Country[]>([]);
     const [animatedBtn, setAnimatedBtn] = useState<HTMLButtonElement>();
+
+    useEffect(() => {
+        const localStorageData = localStorage.getItem(mode);
+        if (localStorageData === null) return;
+        const [storedScore, storedUsedCountriesStr] = localStorageData.split(';');
+        setScore(Number(storedScore));
+        const storedUsedCountries = storedUsedCountriesStr?.split(',').map(countryStr => {
+            const [name, code, flagUrl] = countryStr.split('+');
+
+            return { name: name!, code: code!, flagUrl: flagUrl! };
+        });
+        setUsedCountries(storedUsedCountries!);
+    }, []);
 
     useEffect(() => {
         console.log(animatedBtn);
@@ -38,9 +52,21 @@ export default function Game({ data }: Props) {
         if (country.code === correctCountry?.code) {
             setScore(score => score + 10);
             setUsedCountries(usedCountries => usedCountries.concat(country));
+            localStorage.setItem(
+                mode,
+                `${score + 10};${[...usedCountries, country]
+                    .map(el => `${el.name}+${el.code}+${el.flagUrl}`)
+                    .join(',')}`
+            );
         } else {
             setScore(score => score - 5);
             setAnimatedBtn(e.currentTarget);
+            localStorage.setItem(
+                mode,
+                `${score - 5};${usedCountries
+                    .map(el => `${el.name}+${el.code}+${el.flagUrl}`)
+                    .join(',')}`
+            );
         }
     }
 
@@ -77,6 +103,7 @@ export default function Game({ data }: Props) {
     }
 
     function reset() {
+        localStorage.removeItem(mode);
         setScore(0);
         setUsedCountries([]);
     }
@@ -87,7 +114,7 @@ export default function Game({ data }: Props) {
             <div className="flex flex-col gap-8">
                 <h1 className="text-2xl">You finished.</h1>{' '}
                 <button
-                    className="text-xl bg-primary-800 py-4 rounded-md transition-transform scale-optimized hover:scale-emphasize"
+                    className="text-xl bg-pink-800 py-4 rounded-md transition-transform scale-optimized hover:scale-emphasize"
                     onClick={reset}
                 >
                     Reset
@@ -97,7 +124,15 @@ export default function Game({ data }: Props) {
 
     return (
         <div className="flex flex-col gap-8">
-            <div className="text-2xl text-center font-bold">Score: {score}</div>
+            <div className="grid grid-cols-2 items-center">
+                <div className="text-2xl text-center font-bold">Score: {score}</div>
+                <button
+                    className="text-xl bg-pink-800 py-2 rounded-md transition-transform scale-optimized hover:scale-emphasize"
+                    onClick={reset}
+                >
+                    Reset
+                </button>
+            </div>
 
             <div className="flex flex-col items-center gap-2">
                 <label className="text-xl" htmlFor="progress">

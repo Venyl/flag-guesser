@@ -1,4 +1,4 @@
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import Game from './Game';
 
 interface Props {
@@ -21,7 +21,7 @@ export default function FlagGuesser({ mode }: Props) {
 
     return (
         <div>
-            <Game data={query.data} />
+            <Game data={query.data} mode={mode} />
         </div>
     );
 }
