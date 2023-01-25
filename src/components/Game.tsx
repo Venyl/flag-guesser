@@ -112,7 +112,7 @@ export default function Game({ data, mode }: Props) {
     if (usedCountries.length === countries.length)
         return (
             <div className="flex flex-col gap-8">
-                <h1 className="text-2xl">You finished.</h1>{' '}
+                <h1 className="text-2xl">You finished with a score of {score}.</h1>{' '}
                 <button
                     className="text-xl bg-pink-800 py-4 rounded-md transition-transform scale-optimized hover:scale-emphasize"
                     onClick={reset}
