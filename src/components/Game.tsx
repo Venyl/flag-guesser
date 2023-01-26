@@ -126,16 +126,14 @@ export default function Game({ data, mode }: Props) {
         );
 
     return (
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-8 min-w-[20rem]">
             <div className="grid game-bar items-center">
                 <Link to="/">
                     <button className="grid place-items-center text-xl bg-blue-800 py-2 px-6 rounded-md transition-transform scale-optimized hover:scale-emphasize">
                         <RiHome2Line />
                     </button>
                 </Link>
-                <div className="text-2xl text-center font-bold rounded-md outline outline-1 outline-neutral-200">
-                    Score: {score}
-                </div>
+                <div className="text-2xl text-center font-bold rounded-md">Score: {score}</div>
                 <button
                     className="grid place-items-center text-xl bg-pink-800 py-2 px-6 rounded-md transition-transform scale-optimized hover:scale-emphasize"
                     onClick={reset}
@@ -153,9 +151,9 @@ export default function Game({ data, mode }: Props) {
                 ></progress>
             </div>
 
-            <div className="flex justify-center items-center max-w-xs max-h-80 rounded-md overflow-hidden">
+            <div className="grid place-items-center max-w-xs h-52 rounded-md">
                 <img
-                    className="my-auto w-full"
+                    className="max-h-52"
                     src={correctCountry?.flagUrl}
                     alt={correctCountry?.name}
                 />
