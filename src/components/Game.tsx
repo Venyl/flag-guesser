@@ -145,9 +145,6 @@ export default function Game({ data, mode }: Props) {
             </div>
 
             <div className="flex flex-col items-center gap-2">
-                <label className="text-xl" htmlFor="progress">
-                    Progress
-                </label>
                 <progress
                     className="w-full relative"
                     id="progress"
