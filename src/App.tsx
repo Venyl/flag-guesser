@@ -4,8 +4,8 @@ import Card from './components/Card';
 function App() {
     return (
         <>
-            <h1 className="text-5xl font-black text-center md:text-7xl text-neutral-100">
-                Welcome to Flag Guesser! 🏳️
+            <h1 className="text-5xl font-black text-center md:text-8xl text-neutral-100">
+                Welcome to Flag Guesser!
             </h1>
             <div>
                 <h2 className="text-center text-3xl font-bold text-neutral-400 md:text-5xl">

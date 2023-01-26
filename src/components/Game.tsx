@@ -1,4 +1,7 @@
 import { useState, useMemo, useEffect } from 'react';
+import { RxReload, RxHome } from 'react-icons/rx';
+import { RiHome2Line } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
 
 interface ApiCountry {
     name: {
@@ -117,20 +120,27 @@ export default function Game({ data, mode }: Props) {
                     className="text-xl bg-pink-800 py-4 rounded-md transition-transform scale-optimized hover:scale-emphasize"
                     onClick={reset}
                 >
-                    Reset
+                    <RxReload />
                 </button>
             </div>
         );
 
     return (
         <div className="flex flex-col gap-8">
-            <div className="grid grid-cols-2 items-center">
-                <div className="text-2xl text-center font-bold">Score: {score}</div>
+            <div className="grid game-bar items-center">
+                <Link to="/">
+                    <button className="grid place-items-center text-xl bg-blue-800 py-2 px-6 rounded-md transition-transform scale-optimized hover:scale-emphasize">
+                        <RiHome2Line />
+                    </button>
+                </Link>
+                <div className="text-2xl text-center font-bold rounded-md outline outline-1 outline-neutral-200">
+                    Score: {score}
+                </div>
                 <button
-                    className="text-xl bg-pink-800 py-2 rounded-md transition-transform scale-optimized hover:scale-emphasize"
+                    className="grid place-items-center text-xl bg-pink-800 py-2 px-6 rounded-md transition-transform scale-optimized hover:scale-emphasize"
                     onClick={reset}
                 >
-                    Reset
+                    <RxReload />
                 </button>
             </div>
 
